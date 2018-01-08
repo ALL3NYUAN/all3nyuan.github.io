@@ -3,43 +3,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <title>404页面</title>
     <style>
-    .logo h1 {
-            font-size: 150px;
-            color: #8F8E8C;
-            text-align: center;
-            margin-bottom: 1px;
-            text-shadow: 1px 1px 6px #fff;
-        }
-        
-        .logo p {
-            color: rgb(158, 159, 170);
-            font-size: 20px;
-            margin-top: 1px;
-            text-align: center;
-        }
-        
-        .logo span {
-            color: rgb(158, 159, 170);
-            font-size: 20px;
-            margin-top: 1px;
-            text-align: center;
-        }
-        
-        .sub a {
-            color: white;
-            background: #8F8E8C;
-            text-decoration: none;
-            padding: 7px 120px;
-            font-size: 13px;
-            font-family: arial, serif;
-            font-weight: bold;
-            -webkit-border-radius: 3em;
-            -moz-border-radius: .1em;
-            -border-radius: .1em;
-        }
+    .logo h1 {font-size: 130px;color: #8F8E8C;text-align: center; margin-bottom: 1px;text-shadow: 1px 1px 6px #fff;}        
+    .logo p {color: #9e9faa;font-size: 20px; margin-top: 1px;text-align: center;}        
+    .logo span {color: #9e9faa;font-size: 20px; margin-top: 1px;text-align: center;}        
+    .sub a { color: white;background: #8F8E8C;text-decoration: none;padding: 7px 120px;font-size: 20px;font-family: arial, serif;font-weight: bold;-webkit-border-radius: 3em;-moz-border-radius: .1em;-border-radius: .1em;}
+    #num{color: #f7b72dee;font-weight:bold;font-size: 22px; }
     </style>
     <script type="text/javascript">
-        var num=4;
+        var num=10;
         function redirect(){
             num--;
             document.getElementById("num").innerHTML=num;
@@ -50,17 +21,16 @@
             }
         setInterval("redirect()", 1000);
     </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    </head>
-    
+    </head>   
     <body onload="redirect();">
     <!-- hexo-inject:begin --><!-- hexo-inject:end -->          
             <div class="logo">
                 <h1>404</h1>
                 <p>抱歉，找不到此页面</p>
                 <p>Error occured! - File not Found</p>
-                <span id="num"></span>秒后自动跳转到主页
+                <p><span id="num"></span>秒后自动跳转到主页</p>
                 <div class="sub">
-                    <p><a href="https://all3nyuan.github.io/" target="_blank" rel="noopener">Back</a></p>
+                    <p><a href="https://all3nyuan.github.io/" target="_blank" rel="noopener">立即返回</a></p>
                 </div>
             </div>
         <!-- hexo-inject:begin --><!-- hexo-inject:end -->   
