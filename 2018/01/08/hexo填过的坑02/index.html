@@ -123,7 +123,7 @@
 
 
 
-  <title>tags | All3nyuan's Blog</title>
+  <title>hexo填过的坑- < !--more-->失效 | All3nyuan's Blog</title>
   
 
 
@@ -349,40 +349,199 @@ $(function() {
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/hexo填过的坑02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuan Jun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="All3nyuan's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 4 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/hexo/" style="font-size: 30px; color: #111">hexo</a> <a href="/tags/其他/" style="font-size: 12px; color: #ccc">其他</a> <a href="/tags/技术贴/" style="font-size: 30px; color: #111">技术贴</a> <a href="/tags/福利贴/" style="font-size: 12px; color: #ccc">福利贴</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">hexo填过的坑- < !--more-->失效</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T16:56:38+08:00">2018-01-08</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/08/hexo填过的坑02/" class="leancloud_visitors" data-flag-title="hexo填过的坑- < !--more-->失效">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h4>掉坑里原因</h4>
+<p>由于自己下载了一个hexo-renderer-markdown-it的插件(原本想在文章里添加emoji表情)，结果发现emoji那个包竟然多达900多MB,
+果断卸载。
+<a id="more"></a>
+于是自己直接就在文件夹里手工删除，导致hexo server都出错了，错误原因是缺少模块，重置模块之后发现不仅&lt; !--more--&gt;失效，就连图片也失效了，图片原本路径为</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](文件夹/图片名.格式)</span><br></pre></td></tr></table></figure></p>
+<p>现在直接变成了
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](图片名.格式)</span><br></pre></td></tr></table></figure></p>
+<p>文件名都不用了wtf？！，代码段前面的$好像也不用了。
+最头痛的是&lt; !--more--&gt;失效找不到解决办法，百度根本找不到答案，科学上网去Google了一下，一位大神完美解决了我的问题
+<img src="/2018/01/08/hexo填过的坑02/solution.PNG" alt="solution"></p>
+<p>具体意思是：
+看起来，hexo-renderer-markdown-it插件html会在注释中对&lt;and&gt;字符进行编码，这样可以防止在插入片段时识别它。 我能够通过将这个注释包装在一个转义块中来实现它：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;escape&gt; &lt;！ --more-- &gt; &lt;/ escape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这似乎阻止了HTML编码的渲染插件的注释和摘录开始工作 如预期。 这可能是也可能不是渲染器中的错误，我不确定。 官方markdown规范并没有专门针对html注释，但是它允许使用&lt;作为字面字符（自动转义）以及嵌入html的直接嵌入。 渲染者应该认识到在哪种情况下它正在被使用，要么逃脱，要么逃避。 我认为html的注释应该被看作是内嵌的html，并且不会被转义，但是我想也可以用其他的方式来争论。(google翻译)</p>
+<h4>总结</h4>
+<p>1.尽量选择稳定一点的版本，我这个Next的版本6.0.0好像不是很稳定；</p>
+<p>2.安装插件最好先借鉴一下他人的经验，不然自己又要挖坑，然后花大把时间来填坑。</p>
+<p>3.卸载插件语句
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall 插件名</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术贴/" rel="tag"><i class="fa fa-tag"></i> 技术贴</a>
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/08/hexo填过的坑/" rel="next" title="hexo填过的坑-社交链接图标">
+                <i class="fa fa-chevron-left"></i> hexo填过的坑-社交链接图标
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -415,8 +574,17 @@ $(function() {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +676,22 @@ $(function() {
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">掉坑里原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
