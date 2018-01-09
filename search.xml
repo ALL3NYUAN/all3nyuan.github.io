@@ -1,181 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[搭建hexo基本完成小结]]></title>
-      <url>/2018/01/09/hexo%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览，
-期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。
-<a id="more"></a>
-自己感觉还是收获了不少东西，主要的时间还是花在了博客美化上(能用的评论框真的是太难找了)。</p>
-<h3>总结</h3>
-<p>有些东西还是需要自己不断摸索，遇到坑还是要努力填上，而不是磨蹭浪费时间。不说了，我要去学习去了。
-<img src="/2018/01/09/hexo总结/run.gif" alt="run"></p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[VPN分享]]></title>
-      <url>/2018/01/08/VPN/</url>
-      <content type="html"><![CDATA[<h3>科学上网</h3>
-<p>最快的办法 &lt;百度搜索科学上网&gt;</p>
-<h3>PC端</h3>
-<h4>1.XX-Net 3.7.3 测试版</h4>
-<p><a href="https://github.com/XX-net/XX-Net" target="_blank" rel="noopener">https://github.com/XX-net/XX-Net</a>
-<a id="more"></a></p>
-<h4>2.Psiphon3 赛风 3</h4>
-<p><a href="https://psiphon3.com/zh/index.html" target="_blank" rel="noopener">https://psiphon3.com/zh/index.html</a></p>
-<h4>3.Tor Browser  7.0.7</h4>
-<p><a href="https://www.torproject.org/" target="_blank" rel="noopener">https://www.torproject.org/</a></p>
-<h3>ios端</h3>
-<p>国内App Store VPN基本上是封完了，美区App Store的VPN有些能用的但在中国大陆不提供服务。
-美区App Store下载注册一个美国的苹果账户登录即可
-<img src="/2018/01/08/VPN/01.PNG" alt="01"></p>
-<h4>1.STARVPN</h4>
-<h4>2.风速VPN</h4>
-<h4>3.VPN</h4>
-<h4>4.懒人VPN</h4>
-<h3>安卓端</h3>
-<p>安卓端的VPN就太多了，上架应用市场没有App Store审核那么严格，而且网上下载个apk安装包就可以安装使用，随便找找应该就是一大把</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 杂谈 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 福利贴 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[hexo填过的坑- < !--more-->失效]]></title>
-      <url>/2018/01/08/hexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%9102/</url>
-      <content type="html"><![CDATA[<h4>掉坑里原因</h4>
-<p>由于自己下载了一个hexo-renderer-markdown-it的插件(原本想在文章里添加emoji表情)，结果发现emoji那个包竟然多达900多MB,
-果断卸载。
-<a id="more"></a>
-于是自己直接就在文件夹里手工删除，导致hexo server都出错了，错误原因是缺少模块，重置模块之后发现不仅&lt; !--more--&gt;失效，就连图片也失效了，图片原本路径为</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](文件夹/图片名.格式)</span><br></pre></td></tr></table></figure></p>
-<p>现在直接变成了
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](图片名.格式)</span><br></pre></td></tr></table></figure></p>
-<p>文件名都不用了wtf？！，代码段前面的$好像也不用了。
-最头痛的是&lt; !--more--&gt;失效找不到解决办法，百度根本找不到答案，科学上网去Google了一下，一位大神完美解决了我的问题
-<img src="/2018/01/08/hexo填过的坑02/solution.PNG" alt="solution"></p>
-<p>具体意思是：
-看起来，hexo-renderer-markdown-it插件html会在注释中对&lt;and&gt;字符进行编码，这样可以防止在插入片段时识别它。 我能够通过将这个注释包装在一个转义块中来实现它：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;escape&gt; &lt;！ --more-- &gt; &lt;/ escape&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这似乎阻止了HTML编码的渲染插件的注释和摘录开始工作 如预期。 这可能是也可能不是渲染器中的错误，我不确定。 官方markdown规范并没有专门针对html注释，但是它允许使用&lt;作为字面字符（自动转义）以及嵌入html的直接嵌入。 渲染者应该认识到在哪种情况下它正在被使用，要么逃脱，要么逃避。 我认为html的注释应该被看作是内嵌的html，并且不会被转义，但是我想也可以用其他的方式来争论。(google翻译)</p>
-<h4>总结</h4>
-<p>1.尽量选择稳定一点的版本，我这个Next的版本6.0.0好像不是很稳定；</p>
-<p>2.安装插件最好先借鉴一下他人的经验，不然自己又要挖坑，然后花大把时间来填坑。</p>
-<p>3.卸载插件语句
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall 插件名</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术贴 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[hexo填过的坑-社交链接图标]]></title>
-      <url>/2018/01/08/hexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%91/</url>
-      <content type="html"><![CDATA[<h4>掉坑里原因</h4>
-<p>自己使用的是hexo Next6.0.0的主题，此版本调用社交图标时已经简化了。然而我在设置社交图标之前，看到的教程设置都是这样的
-<a id="more"></a></p>
-<p><img src="/2018/01/08/hexo填过的坑/social.png" alt="social"></p>
-<p>自己就按照上面的折腾了半天也没显示出来，怪自己没有好好阅读说明文档！
-其实在social菜单上面有一串使用说明如下所示：</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Social Links.</span><br><span class="line">Usage: `Key: permalink || icon`</span><br><span class="line">Key is the link label showing to end users.</span><br><span class="line">Value before `||` delimeter is the target permalink.</span><br><span class="line">Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</span><br></pre></td></tr></table></figure></p>
-<p>所以正确的引用社交链接图标只需在social菜单内修改即可，social_icons保持不变</p>
-<p><img src="/2018/01/08/hexo填过的坑/social2.PNG" alt="social2"></p>
-<h4>总结</h4>
-<p>认真阅读说明文档！</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 技术贴 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Wallpaper分享01]]></title>
-      <url>/2018/01/06/Wallpaper/</url>
-      <content type="html"><![CDATA[<p><img src="/2018/01/06/Wallpaper/test.jpg" alt="test"></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 杂谈 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 福利贴 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[博客简介]]></title>
-      <url>/2018/01/06/SITE%20INF/</url>
-      <content type="html"><![CDATA[<h2>日常上传技术贴和福利贴</h2>
-<h3>New Start 2018!</h3>
-<p><img src="/2018/01/06/SITE INF/inf.jpg" alt="inf"></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 杂谈 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 其他 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[搭建hexo基本完成小结]]></title>
+    <url>%2F2018%2F01%2F09%2Fhexo%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览， 期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。 自己感觉还是收获了不少东西，主要的时间还是花在了博客美化上(能用的评论框真的是太难找了)。 总结 有些东西还是需要自己不断摸索，遇到坑还是要努力填上，而不是磨蹭浪费时间。不说了，我要去学习去了。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[VPN分享]]></title>
+    <url>%2F2018%2F01%2F08%2FVPN%2F</url>
+    <content type="text"><![CDATA[科学上网 最快的办法 &lt;百度搜索科学上网&gt; PC端 1.XX-Net 3.7.3 测试版 https://github.com/XX-net/XX-Net 2.Psiphon3 赛风 3 https://psiphon3.com/zh/index.html 3.Tor Browser 7.0.7 https://www.torproject.org/ ios端 国内App Store VPN基本上是封完了，美区App Store的VPN有些能用的但在中国大陆不提供服务。 美区App Store下载注册一个美国的苹果账户登录即可 1.STARVPN 2.风速VPN 3.VPN 4.懒人VPN 安卓端 安卓端的VPN就太多了，上架应用市场没有App Store审核那么严格，而且网上下载个apk安装包就可以安装使用，随便找找应该就是一大把]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>福利贴</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo填过的坑- < !--more-->失效]]></title>
+    <url>%2F2018%2F01%2F08%2Fhexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%9102%2F</url>
+    <content type="text"><![CDATA[掉坑里原因 由于自己下载了一个hexo-renderer-markdown-it的插件(原本想在文章里添加emoji表情)，结果发现emoji那个包竟然多达900多MB, 果断卸载。 于是自己直接就在文件夹里手工删除，导致hexo server都出错了，错误原因是缺少模块，重置模块之后发现不仅&lt; !--more--&gt;失效，就连图片也失效了，图片原本路径为 1![你想输入的替代文字](文件夹/图片名.格式) 现在直接变成了 1![你想输入的替代文字](图片名.格式) 文件名都不用了wtf？！，代码段前面的$好像也不用了。 最头痛的是&lt; !--more--&gt;失效找不到解决办法，百度根本找不到答案，科学上网去Google了一下，一位大神完美解决了我的问题 具体意思是： 看起来，hexo-renderer-markdown-it插件html会在注释中对&lt;and&gt;字符进行编码，这样可以防止在插入片段时识别它。 我能够通过将这个注释包装在一个转义块中来实现它： 1&lt;escape&gt; &lt;！ --more-- &gt; &lt;/ escape&gt; 这似乎阻止了HTML编码的渲染插件的注释和摘录开始工作 如预期。 这可能是也可能不是渲染器中的错误，我不确定。 官方markdown规范并没有专门针对html注释，但是它允许使用&lt;作为字面字符（自动转义）以及嵌入html的直接嵌入。 渲染者应该认识到在哪种情况下它正在被使用，要么逃脱，要么逃避。 我认为html的注释应该被看作是内嵌的html，并且不会被转义，但是我想也可以用其他的方式来争论。(google翻译) 总结 1.尽量选择稳定一点的版本，我这个Next的版本6.0.0好像不是很稳定； 2.安装插件最好先借鉴一下他人的经验，不然自己又要挖坑，然后花大把时间来填坑。 3.卸载插件语句 1npm uninstall 插件名]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术贴</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo填过的坑-社交链接图标]]></title>
+    <url>%2F2018%2F01%2F08%2Fhexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[掉坑里原因 自己使用的是hexo Next6.0.0的主题，此版本调用社交图标时已经简化了。然而我在设置社交图标之前，看到的教程设置都是这样的 自己就按照上面的折腾了半天也没显示出来，怪自己没有好好阅读说明文档！ 其实在social菜单上面有一串使用说明如下所示： 12345Social Links.Usage: `Key: permalink || icon`Key is the link label showing to end users.Value before `||` delimeter is the target permalink.Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded. 所以正确的引用社交链接图标只需在social菜单内修改即可，social_icons保持不变 总结 认真阅读说明文档！]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术贴</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Wallpaper分享01]]></title>
+    <url>%2F2018%2F01%2F06%2FWallpaper%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>福利贴</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[博客简介]]></title>
+    <url>%2F2018%2F01%2F06%2FSITE%20INF%2F</url>
+    <content type="text"><![CDATA[日常上传技术贴和福利贴 New Start 2018!]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
 </search>
