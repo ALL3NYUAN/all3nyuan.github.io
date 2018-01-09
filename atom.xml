@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>All3nyuan&#39;s Blog</title>
+  
+  <subtitle>Learning and sharing</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-01-09T06:08:16.090Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Yuan Jun</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建hexo基本完成小结</title>
+    <link href="http://yoursite.com/2018/01/09/hexo%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/01/09/hexo总结/</id>
+    <published>2018-01-09T05:31:16.000Z</published>
+    <updated>2018-01-09T06:08:16.090Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览，期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。<a id="more"></a>自己感觉还是收获了不少东西，主要的时间还是花在了博客美化上(能用的评论框真的是太难找了)。</p><h3>总结</h3><p>有些东西还是需要自己不断摸索，遇到坑还是要努力填上，而不是磨蹭浪费时间。不说了，我要去学习去了。<img src="/2018/01/09/hexo总结/run.gif" alt="run"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览，
+期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VPN分享</title>
+    <link href="http://yoursite.com/2018/01/08/VPN/"/>
+    <id>http://yoursite.com/2018/01/08/VPN/</id>
+    <published>2018-01-08T10:53:15.000Z</published>
+    <updated>2018-01-08T14:27:38.547Z</updated>
+    
+    <content type="html"><![CDATA[<h3>科学上网</h3><p>最快的办法 &lt;百度搜索科学上网&gt;</p><h3>PC端</h3><h4>1.XX-Net 3.7.3 测试版</h4><p><a href="https://github.com/XX-net/XX-Net" target="_blank" rel="noopener">https://github.com/XX-net/XX-Net</a><a id="more"></a></p><h4>2.Psiphon3 赛风 3</h4><p><a href="https://psiphon3.com/zh/index.html" target="_blank" rel="noopener">https://psiphon3.com/zh/index.html</a></p><h4>3.Tor Browser  7.0.7</h4><p><a href="https://www.torproject.org/" target="_blank" rel="noopener">https://www.torproject.org/</a></p><h3>ios端</h3><p>国内App Store VPN基本上是封完了，美区App Store的VPN有些能用的但在中国大陆不提供服务。美区App Store下载注册一个美国的苹果账户登录即可<img src="/2018/01/08/VPN/01.PNG" alt="01"></p><h4>1.STARVPN</h4><h4>2.风速VPN</h4><h4>3.VPN</h4><h4>4.懒人VPN</h4><h3>安卓端</h3><p>安卓端的VPN就太多了，上架应用市场没有App Store审核那么严格，而且网上下载个apk安装包就可以安装使用，随便找找应该就是一大把</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3&gt;科学上网&lt;/h3&gt;
+&lt;p&gt;最快的办法 &amp;lt;百度搜索科学上网&amp;gt;&lt;/p&gt;
+&lt;h3&gt;PC端&lt;/h3&gt;
+&lt;h4&gt;1.XX-Net 3.7.3 测试版&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/XX-net/XX-Net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/XX-net/XX-Net&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="福利贴" scheme="http://yoursite.com/tags/%E7%A6%8F%E5%88%A9%E8%B4%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo填过的坑- &lt; !--more--&gt;失效</title>
+    <link href="http://yoursite.com/2018/01/08/hexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%9102/"/>
+    <id>http://yoursite.com/2018/01/08/hexo填过的坑02/</id>
+    <published>2018-01-08T08:56:38.000Z</published>
+    <updated>2018-01-08T11:10:31.771Z</updated>
+    
+    <content type="html"><![CDATA[<h4>掉坑里原因</h4><p>由于自己下载了一个hexo-renderer-markdown-it的插件(原本想在文章里添加emoji表情)，结果发现emoji那个包竟然多达900多MB,果断卸载。<a id="more"></a>于是自己直接就在文件夹里手工删除，导致hexo server都出错了，错误原因是缺少模块，重置模块之后发现不仅&lt; !--more--&gt;失效，就连图片也失效了，图片原本路径为</p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](文件夹/图片名.格式)</span><br></pre></td></tr></table></figure></p><p>现在直接变成了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](图片名.格式)</span><br></pre></td></tr></table></figure></p><p>文件名都不用了wtf？！，代码段前面的$好像也不用了。最头痛的是&lt; !--more--&gt;失效找不到解决办法，百度根本找不到答案，科学上网去Google了一下，一位大神完美解决了我的问题<img src="/2018/01/08/hexo填过的坑02/solution.PNG" alt="solution"></p><p>具体意思是：看起来，hexo-renderer-markdown-it插件html会在注释中对&lt;and&gt;字符进行编码，这样可以防止在插入片段时识别它。 我能够通过将这个注释包装在一个转义块中来实现它：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;escape&gt; &lt;！ --more-- &gt; &lt;/ escape&gt;</span><br></pre></td></tr></table></figure></p><p>这似乎阻止了HTML编码的渲染插件的注释和摘录开始工作 如预期。 这可能是也可能不是渲染器中的错误，我不确定。 官方markdown规范并没有专门针对html注释，但是它允许使用&lt;作为字面字符（自动转义）以及嵌入html的直接嵌入。 渲染者应该认识到在哪种情况下它正在被使用，要么逃脱，要么逃避。 我认为html的注释应该被看作是内嵌的html，并且不会被转义，但是我想也可以用其他的方式来争论。(google翻译)</p><h4>总结</h4><p>1.尽量选择稳定一点的版本，我这个Next的版本6.0.0好像不是很稳定；</p><p>2.安装插件最好先借鉴一下他人的经验，不然自己又要挖坑，然后花大把时间来填坑。</p><p>3.卸载插件语句<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall 插件名</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4&gt;掉坑里原因&lt;/h4&gt;
+&lt;p&gt;由于自己下载了一个hexo-renderer-markdown-it的插件(原本想在文章里添加emoji表情)，结果发现emoji那个包竟然多达900多MB,
+果断卸载。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="技术贴" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF%E8%B4%B4/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo填过的坑-社交链接图标</title>
+    <link href="http://yoursite.com/2018/01/08/hexo%E5%A1%AB%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    <id>http://yoursite.com/2018/01/08/hexo填过的坑/</id>
+    <published>2018-01-08T05:58:32.000Z</published>
+    <updated>2018-01-08T11:10:27.302Z</updated>
+    
+    <content type="html"><![CDATA[<h4>掉坑里原因</h4><p>自己使用的是hexo Next6.0.0的主题，此版本调用社交图标时已经简化了。然而我在设置社交图标之前，看到的教程设置都是这样的<a id="more"></a></p><p><img src="/2018/01/08/hexo填过的坑/social.png" alt="social"></p><p>自己就按照上面的折腾了半天也没显示出来，怪自己没有好好阅读说明文档！其实在social菜单上面有一串使用说明如下所示：</p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Social Links.</span><br><span class="line">Usage: `Key: permalink || icon`</span><br><span class="line">Key is the link label showing to end users.</span><br><span class="line">Value before `||` delimeter is the target permalink.</span><br><span class="line">Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</span><br></pre></td></tr></table></figure></p><p>所以正确的引用社交链接图标只需在social菜单内修改即可，social_icons保持不变</p><p><img src="/2018/01/08/hexo填过的坑/social2.PNG" alt="social2"></p><h4>总结</h4><p>认真阅读说明文档！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4&gt;掉坑里原因&lt;/h4&gt;
+&lt;p&gt;自己使用的是hexo Next6.0.0的主题，此版本调用社交图标时已经简化了。然而我在设置社交图标之前，看到的教程设置都是这样的&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="技术贴" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF%E8%B4%B4/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Wallpaper分享01</title>
+    <link href="http://yoursite.com/2018/01/06/Wallpaper/"/>
+    <id>http://yoursite.com/2018/01/06/Wallpaper/</id>
+    <published>2018-01-06T14:44:12.000Z</published>
+    <updated>2018-01-08T07:18:32.408Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2018/01/06/Wallpaper/test.jpg" alt="test"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/2018/01/06/Wallpaper/test.jpg&quot; alt=&quot;test&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="福利贴" scheme="http://yoursite.com/tags/%E7%A6%8F%E5%88%A9%E8%B4%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客简介</title>
+    <link href="http://yoursite.com/2018/01/06/SITE%20INF/"/>
+    <id>http://yoursite.com/2018/01/06/SITE INF/</id>
+    <published>2018-01-06T14:44:00.000Z</published>
+    <updated>2018-01-08T09:58:43.203Z</updated>
+    
+    <content type="html"><![CDATA[<h2>日常上传技术贴和福利贴</h2><h3>New Start 2018!</h3><p><img src="/2018/01/06/SITE INF/inf.jpg" alt="inf"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2&gt;日常上传技术贴和福利贴&lt;/h2&gt;
+&lt;h3&gt;New Start 2018!&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/01/06/SITE INF/inf.jpg&quot; alt=&quot;inf&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="其他" scheme="http://yoursite.com/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+</feed>
