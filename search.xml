@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[搭建hexo基本完成小结]]></title>
+    <url>%2F2018%2F01%2F09%2Fhexo%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览， 期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。 自己感觉还是收获了不少东西，主要的时间还是花在了博客美化上(能用的评论框真的是太难找了)。 总结 有些东西还是需要自己不断摸索，遇到坑还是要努力填上，而不是磨蹭浪费时间。不说了，我要去学习去了。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[VPN分享]]></title>
     <url>%2F2018%2F01%2F08%2FVPN%2F</url>
     <content type="text"><![CDATA[科学上网 最快的办法 &lt;百度搜索科学上网&gt; PC端 1.XX-Net 3.7.3 测试版 https://github.com/XX-net/XX-Net 2.Psiphon3 赛风 3 https://psiphon3.com/zh/index.html 3.Tor Browser 7.0.7 https://www.torproject.org/ ios端 国内App Store VPN基本上是封完了，美区App Store的VPN有些能用的但在中国大陆不提供服务。 美区App Store下载注册一个美国的苹果账户登录即可 1.STARVPN 2.风速VPN 3.VPN 4.懒人VPN 安卓端 安卓端的VPN就太多了，上架应用市场没有App Store审核那么严格，而且网上下载个apk安装包就可以安装使用，随便找找应该就是一大把]]></content>
