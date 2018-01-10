@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://all3nyuan.github.io/"/>
-  <updated>2018-01-09T06:08:16.090Z</updated>
+  <updated>2018-01-10T04:44:32.970Z</updated>
   <id>https://all3nyuan.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo自定义背景图片</title>
+    <link href="https://all3nyuan.github.io/2018/01/10/changebg/"/>
+    <id>https://all3nyuan.github.io/2018/01/10/changebg/</id>
+    <published>2018-01-10T03:42:48.000Z</published>
+    <updated>2018-01-10T04:44:32.970Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo默认的背景图片是灰色的，如果个人觉得不好看的话可以修改</p><p>大致过程如下<a id="more"></a></p><ol><li>将背景图片放至 hexo-&gt; themes -&gt; next -&gt; source -&gt; images 的路径下；</li><li>在hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; css -&gt; _custom，找到路径下的custom.styl文件，添加以下代码<br><code>body {</code><br><code>background:url(/images/bg.jpg) no-repeat;</code><br><code>width: 100%;</code><br><code>height: 100%; //设置容器占满屏幕</code><br><code>background-size: 100% 100%; //设置图片占满容器</code><br><code>background-attachment: fixed; //设置图片不随页面移动}</code><br>实现效果：<img src="/2018/01/10/changebg/bg.PNG" alt="bg"></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo默认的背景图片是灰色的，如果个人觉得不好看的话可以修改&lt;/p&gt;
+&lt;p&gt;大致过程如下&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="https://all3nyuan.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="技术贴" scheme="https://all3nyuan.github.io/tags/%E6%8A%80%E6%9C%AF%E8%B4%B4/"/>
+    
+      <category term="hexo" scheme="https://all3nyuan.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建hexo基本完成小结</title>

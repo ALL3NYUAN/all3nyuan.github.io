@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo自定义背景图片]]></title>
+    <url>%2F2018%2F01%2F10%2Fchangebg%2F</url>
+    <content type="text"><![CDATA[hexo默认的背景图片是灰色的，如果个人觉得不好看的话可以修改 大致过程如下 将背景图片放至 hexo-&gt; themes -&gt; next -&gt; source -&gt; images 的路径下； 在hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; css -&gt; _custom，找到路径下的custom.styl文件，添加以下代码 body { background:url(/images/bg.jpg) no-repeat; width: 100%; height: 100%; //设置容器占满屏幕 background-size: 100% 100%; //设置图片占满容器 background-attachment: fixed; //设置图片不随页面移动} 实现效果：]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术贴</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[搭建hexo基本完成小结]]></title>
     <url>%2F2018%2F01%2F09%2Fhexo%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[通过利用github+git+hexo完成了建站、本地调试、部署至github，博客美化到写了几篇文章上传预览， 期间大概花了三天时间，遇到了不少问题和自己挖的坑，通过上网查阅资料和不断调试最终还是解决了。 自己感觉还是收获了不少东西，主要的时间还是花在了博客美化上(能用的评论框真的是太难找了)。 总结 有些东西还是需要自己不断摸索，遇到坑还是要努力填上，而不是磨蹭浪费时间。不说了，我要去学习去了。]]></content>
